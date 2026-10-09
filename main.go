@@ -7,6 +7,25 @@ import (
 	"strings"
 )
 
+func modifUp(contenu []byte) string {
+	mots := strings.Fields(string(contenu))
+	for i := 0; i < len(mots); i++ {
+		if mots[i] == "0" {
+			continue
+		}
+		if mots[i] == "(up)" {
+			lettres := []rune(mots[i-1])
+			for j := 0; j < len(lettres); j++ {
+				if lettres[j] >= 'a' && lettres[j] <= 'z' {
+					lettres[j] = lettres[j] - ('a' - 'A')
+				}
+			}
+			mots[i] = ""
+			mots[i-1] = string(lettres)
+		}
+	}
+	return strings.Join(strings.Fields(strings.Join(mots, " ")), " ")
+}
 func modifBin(contenu []byte) string {
 
 	mots := strings.Fields(string(contenu))
@@ -57,6 +76,26 @@ func modifCap(contenu []byte) string {
 	return strings.Join(mots, " ")
 }
 
+func modifLow(contenu []byte) string {
+	mots := strings.Fields(string(contenu))
+	for i := 0; i < len(mots); i++ {
+		if i == 0 {
+			continue
+		}
+		if mots[i] == "(low)" {
+			lettres := []rune(mots[i-1])
+			for j := 0; j < len(lettres); j++ {
+				if lettres[j] >= 'A' && lettres[j] <= 'Z' {
+					lettres[j] = lettres[j] + ('a' - 'A')
+				}
+			}
+			mots[i-1] = string(lettres)
+			mots[i] = ""
+		}
+	}
+	return strings.Join(strings.Fields(strings.Join(mots, " ")), " ")
+}
+
 func main() {
 
 	fmt.Println(os.Args[1])
@@ -70,8 +109,10 @@ func main() {
 	hexModifie := []byte(modifHex(contenu))
 	binModifie := []byte(modifBin(hexModifie))
 	capModifie := []byte(modifCap(binModifie))
+	upModifie := []byte(modifUp(capModifie))
+	lowModifie := []byte(modifLow(upModifie))
 
-	errW := os.WriteFile(os.Args[2], binModifie, 0644)
+	errW := os.WriteFile(os.Args[2], lowModifie, 0644)
 	if errW != nil {
 		fmt.Println(errW)
 		return
@@ -82,5 +123,5 @@ func main() {
 		fmt.Println(err)
 	}
 
-	fmt.Println(string(capModifie))
+	fmt.Println(string(lowModifie))
 }
