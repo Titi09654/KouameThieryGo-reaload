@@ -25,8 +25,11 @@ func main() {
 	capModifie := []byte(modifCap.ModifCap(upModifie))
 	binModifie := []byte(modifBin.ModifBin(capModifie))
 	lowModifie := []byte(modifLow.ModifLow(binModifie))
+	cap_NombModifie := []byte(modifCap.ModifCap_nombre(lowModifie))
+	low_NombModifie := []byte(modifLow.ModifLow_nombre(cap_NombModifie))
+	up_NombModifie := []byte(modifUp.ModifUp_nombre(low_NombModifie))
 
-	errW := os.WriteFile(os.Args[2], lowModifie, 0644)
+	errW := os.WriteFile(os.Args[2], up_NombModifie, 0644)
 	if errW != nil {
 		fmt.Println(errW)
 		return
@@ -37,5 +40,5 @@ func main() {
 		fmt.Println(err)
 	}
 
-	fmt.Println(string(lowModifie))
+	fmt.Println(string(up_NombModifie))
 }

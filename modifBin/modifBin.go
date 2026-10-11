@@ -7,18 +7,21 @@ import (
 )
 
 func ModifBin(contenu []byte) string {
-
-	mots := strings.Fields(string(contenu))
-	for i := 0; i < len(mots); i++ {
-		if mots[i] == "(bin)" {
-			nombre, err := strconv.ParseInt(mots[i-1], 2, 64)
-			if err != nil {
-				fmt.Print(err)
-				continue
+	lignes := strings.Split(string(contenu), "\n")
+	for i, ligne := range lignes {
+		mots := strings.Fields(ligne)
+		for j := 0; j < len(mots); j++ {
+			if mots[j] == "(bin)" {
+				nombre, err := strconv.ParseInt(mots[j-1], 2, 64)
+				if err != nil {
+					fmt.Print(err)
+					continue
+				}
+				mots[j] = " "
+				mots[j-1] = strconv.FormatInt(nombre, 10)
 			}
-			mots[i] = " "
-			mots[i-1] = strconv.FormatInt(nombre, 10)
 		}
+		lignes[i] = strings.Join(mots, " ")
 	}
-	return strings.Join(mots, " ")
+	return strings.Join(lignes, "\n")
 }

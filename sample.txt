@@ -6,5 +6,7 @@ There is no greater agony than bearing a untold story inside you.
 There is no greater agony than bearing an untold story inside you.
 Punctuation tests are ... kinda boring ,what do you think ?
 Punctuation tests are... kinda boring, what do you think?
-thiery henri 40 (hex) et je suis bon (cap)
-j'aime la VIANDE (low) .
+thiery henri 40 (hex) et je suis un bon (cap, 3)
+j'aime la VIANDE (low)
+JE (cap) SUIS INFORMATICIEN (low, 3)
+kouame est mon nom (up, 4)
