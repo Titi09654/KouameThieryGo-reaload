@@ -10,10 +10,10 @@ func ModifUp(contenu []byte) string {
 	for i, ligne := range lignes {
 		mots := strings.Fields(ligne)
 		for j := 0; j < len(mots); j++ {
-			if mots[j] == "0" {
-				continue
-			}
 			if mots[j] == "(up)" {
+				if j == 0 {
+					continue
+				}
 				lettres := []rune(mots[j-1])
 				for j := 0; j < len(lettres); j++ {
 					if lettres[j] >= 'a' && lettres[j] <= 'z' {
@@ -25,8 +25,8 @@ func ModifUp(contenu []byte) string {
 				mots = append(mots[:j], mots[j+1:]...)
 				j--
 			}
-			lignes[i] = strings.Join(mots, " ")
 		}
+		lignes[i] = strings.Join(mots, " ")
 	}
 	return strings.Join(lignes, "\n")
 }
@@ -45,7 +45,7 @@ func ModifUp_nombre(contenu []byte) string {
 				if err != nil {
 					continue
 				}
-				for l := 0; l <= nombre; l++ {
+				for l := 1; l <= nombre; l++ {
 					if j-l < 0 {
 						break
 					}

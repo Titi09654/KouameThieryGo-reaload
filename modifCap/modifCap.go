@@ -11,9 +11,7 @@ func ModifCap(contenu []byte) string {
 		mots := strings.Fields(ligne)
 		for j := 0; j < len(mots); j++ {
 			if mots[j] == "(cap)" {
-				if j < 0 {
-					mots = append(mots[:j], mots[j+1:]...)
-					j--
+				if j == 0 {
 					continue
 				}
 				lettres := []rune(mots[j-1])
@@ -24,8 +22,8 @@ func ModifCap(contenu []byte) string {
 				mots = append(mots[:j], mots[j+1:]...)
 				j--
 			}
-			lignes[i] = strings.Join(mots, " ")
 		}
+		lignes[i] = strings.Join(mots, " ")
 	}
 	return strings.Join(lignes, "\n")
 }
@@ -51,18 +49,16 @@ func ModifCap_nombre(contenu []byte) string {
 					if len(lettres) == 0 {
 						continue
 					}
-					for k := 0; k < len(lettres); k++ {
-						if lettres[0] >= 'a' && lettres[0] <= 'z' {
-							lettres[0] = lettres[0] - ('a' - 'A')
-						}
+					if lettres[0] >= 'a' && lettres[0] <= 'z' {
+						lettres[0] = lettres[0] - ('a' - 'A')
 					}
 					mots[j-l] = string(lettres)
 				}
 				mots = append(mots[:j], mots[j+2:]...)
 				j--
 			}
-			lignes[i] = strings.Join(mots, " ")
 		}
+		lignes[i] = strings.Join(mots, " ")
 	}
 	return strings.Join(lignes, "\n")
 }

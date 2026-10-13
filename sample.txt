@@ -3,10 +3,39 @@ It was the best of times, it was the worst of TIMES, it was the age of wisdom, I
 Simply add 42 (hex) and 10 (bin) and you will see the result is 68.
 Simply add 66 and 2 and you will see the result is 68.
 There is no greater agony than bearing a untold story inside you.
+There is no greater agony than bearing A untold story inside you.
 There is no greater agony than bearing an untold story inside you.
 Punctuation tests are ... kinda boring ,what do you think ?
 Punctuation tests are... kinda boring, what do you think?
-thiery henri 40 (hex) et je suis un bon (cap, 3)
-j'aime la VIANDE (low)
-JE (cap) SUIS INFORMATICIEN (low, 3)
-kouame est mon nom (up, 4)
+thiery henri (cap, 2) is my name .
+Thiery Henri is my name. 
+JE SUIS UN BON.
+je suis un bon (up, 4) .
+I like meet.
+i (cap) like MEET (low) .
+je (cap) SUIS UN INFORMATICIEN (low, 3) 
+hello world (up)
+hello WORLD
+HELLO WORLD (low)
+HELLO world
+hello (cap) WORLD 
+Hello WORLD
+We are learning go (up, 4)
+WE ARE LEARNING Go
+THIS IS A TEST (low, 2)
+THIS IS a test
+the lord of the rings (cap, 3)
+the Lord Of The rings
+255 (hex)
+597
+1010 (bin)
+10
+Hello , world ! How are you ?
+Hello, world! How are you?
+hello my FRIEND (cap, 2) !
+hello My Friend!
+thiery (cap) is a honest person
+I love call of dutty (up, 3) . 
+it (cap) is A hair
+
+

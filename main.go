@@ -7,6 +7,8 @@ import (
 	"modification/modifHex"
 	"modification/modifLow"
 	"modification/modifUp"
+	"modification/modifan"
+	"modification/modifponctuation"
 	"os"
 )
 
@@ -18,7 +20,6 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(string(contenu))
 
 	hexModifie := []byte(modifHex.ModifHex(contenu))
 	upModifie := []byte(modifUp.ModifUp(hexModifie))
@@ -28,8 +29,10 @@ func main() {
 	cap_NombModifie := []byte(modifCap.ModifCap_nombre(lowModifie))
 	low_NombModifie := []byte(modifLow.ModifLow_nombre(cap_NombModifie))
 	up_NombModifie := []byte(modifUp.ModifUp_nombre(low_NombModifie))
+	a_Modifie := []byte(modifan.Modifan(up_NombModifie))
+	ponctuaction := []byte(modifponctuation.Modifponctuation(a_Modifie))
 
-	errW := os.WriteFile(os.Args[2], up_NombModifie, 0644)
+	errW := os.WriteFile(os.Args[2], ponctuaction, 0644)
 	if errW != nil {
 		fmt.Println(errW)
 		return
@@ -39,6 +42,4 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-
-	fmt.Println(string(up_NombModifie))
 }

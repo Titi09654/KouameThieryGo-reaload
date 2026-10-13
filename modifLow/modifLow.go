@@ -10,10 +10,10 @@ func ModifLow(contenu []byte) string {
 	for i, ligne := range lignes {
 		mots := strings.Fields(ligne)
 		for j := 0; j < len(mots); j++ {
-			if i == 0 {
-				continue
-			}
 			if mots[j] == "(low)" {
+				if j == 0 {
+					continue
+				}
 				lettres := []rune(mots[j-1])
 				for l := 0; l < len(lettres); l++ {
 					if lettres[l] >= 'A' && lettres[l] <= 'Z' {
@@ -24,8 +24,8 @@ func ModifLow(contenu []byte) string {
 				mots = append(mots[:j], mots[j+1:]...)
 				j--
 			}
-			lignes[i] = strings.Join(mots, " ")
 		}
+		lignes[i] = strings.Join(mots, " ")
 	}
 	return strings.Join(lignes, "\n")
 }
@@ -44,7 +44,7 @@ func ModifLow_nombre(contenu []byte) string {
 				if err != nil {
 					continue
 				}
-				for l := 0; l <= nombre; l++ {
+				for l := 1; l <= nombre; l++ {
 					if j-l < 0 {
 						break
 					}
@@ -62,8 +62,8 @@ func ModifLow_nombre(contenu []byte) string {
 				mots = append(mots[:j], mots[j+2:]...)
 				j--
 			}
-			lignes[i] = strings.Join(mots, " ")
 		}
+		lignes[i] = strings.Join(mots, " ")
 	}
 	return strings.Join(lignes, "\n")
 }

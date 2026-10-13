@@ -25,8 +25,8 @@ func ModifHex(contenu []byte) string {
 				mots = append(mots[:j], mots[j+1:]...)
 				j--
 			}
-			lignes[i] = strings.Join(mots, " ")
 		}
+		lignes[i] = strings.Join(mots, " ")
 	}
 	return strings.Join(lignes, "\n")
 }
