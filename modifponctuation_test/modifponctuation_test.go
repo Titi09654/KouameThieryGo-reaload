@@ -7,14 +7,18 @@ import (
 
 func TestModifPonctuaction(t *testing.T) {
 	entrer := []string{
-		"hello my FRIEND  !",
-		"I love call of dutty  .",
-		"Hello , world ! How are you ?",
+		"( bonjour )",
+		`" bonjour "`,
+		"' bonjour '",
+		"l' homme et j' aime",
+		"( bonjour , toi ! )",
 	}
 	attendu := []string{
-		"hello my FRIEND!",
-		"I love call of dutty.",
-		"Hello, world! How are you?",
+	  "(bonjour)",
+	  `"bonjour"`,
+	  "'bonjour'",
+	  "l'homme et j'aime",
+	  "(bonjour, toi!)",
 	}
 	for i := 0; i < len(entrer); i++ {
 		resultat := modifponctuation.Modifponctuation([]byte(entrer[i]))
